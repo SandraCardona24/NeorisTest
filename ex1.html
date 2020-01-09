@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello World from DOM</h1>
+  <comp-foo></comp-foo>
+
+  <template id="comp-foo-from-template">
+    <style>
+      div {
+        background-color: black;
+      }
+
+      h1 {
+        color: red;
+      }
+
+      p {
+        color: green;
+      }
+    </style>
+
+    <div>
+      <h1>Hello World!</h1>
+      <p>from Shadow DOM</p>
+      <button onclick="doMagic()">doMagic</button>
+    </div>
+     
+    <script>
+      function doMagic() {
+        alert('Puff');
+      }
+    </script>
+  </template>
+
+  <script>
+    window.customElements.define('comp-foo', class extends HTMLElement {
+      constructor() {
+        super();
+        let shadowRoot = this.attachShadow({mode: 'open'});
+        shadowRoot.appendChild(document.querySelector('#comp-foo-from-template').content.cloneNode(true));
+      }
+    });
+  </script>
+</body>
+</html>
