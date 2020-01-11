@@ -6,5 +6,10 @@ customElements.define('neo-input', class extends HTMLElement {
     shadowRoot.innerHTML = `
       <input type="text">
     `;
+
+    let input = shadowRoot.querySelector('input');
+    input.addEventListener('change', () => {
+      service.input = input.value;
+    });
   }
 });
