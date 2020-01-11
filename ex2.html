@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ex2</title>
+</head>
+<body>
+  <neo-form></neo-form>
+  <script>
+    customElements.define('neo-form', class extends HTMLElement {
+      constructor() {
+        super();
+        const shadowRoot = this.attachShadow({ mode: 'open' });
+        
+        // template
+        shadowRoot.innerHTML = `
+          <input type="text">
+          <button>Lanzar Alerta</button>
+        `;
+        
+        shadowRoot.querySelector('button').addEventListener('click', () => { 
+          alert(shadowRoot.querySelector('input').value);
+        });
+      } 
+    });
+  </script>
+</body>
+</html>

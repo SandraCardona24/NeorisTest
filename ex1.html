@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Ex1</title>
 </head>
 <body>
   <h1>Hello World from DOM</h1>
@@ -42,8 +42,8 @@
     window.customElements.define('comp-foo', class extends HTMLElement {
       constructor() {
         super();
-        let shadowRoot = this.attachShadow({mode: 'open'});
-        shadowRoot.appendChild(document.querySelector('#comp-foo-from-template').content.cloneNode(true));
+        this.shadowRoot = this.attachShadow({mode: 'open'});
+        this.shadowRoot.appendChild(document.querySelector('#comp-foo-from-template').content.cloneNode(true));
       }
     });
   </script>
